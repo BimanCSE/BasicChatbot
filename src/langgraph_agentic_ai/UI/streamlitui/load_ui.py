@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 from src.langgraph_agentic_ai.UI.config import ConfigClass
+from src.langgraph_agentic_ai.UI.config import UsecaseEnum
 
 
 class LoadStreamlitUI:
@@ -34,4 +35,14 @@ class LoadStreamlitUI:
             self.user_control["selected_usecase"] = st.selectbox(
                 "Select Usecases", use_case_option
             )
+            if (
+                self.user_control["selected_usecase"]
+                == UsecaseEnum.CHATBOT_WITH_WEB_SEARCH_TOOL
+            ):
+                self.user_control["tavily_api_key"] = st.text_input(
+                    value=self.config.tavily_api_key,
+                    type="password",
+                    label="tavily_api_key",
+                )
+                os.environ["TAVILY_API_KEY"] = self.user_control["tavily_api_key"]
         return self.user_control

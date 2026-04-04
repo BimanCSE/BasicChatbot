@@ -12,10 +12,8 @@ class ChatbotWithToolNode:
     Chatbot with tool logic implementation
     """
 
-    def __init__(self, model):
-        self.llm_model = model.bind_tools(
-            [addition_tool, subtraction_tool, multiplication_tool, division_tool]
-        )
+    def __init__(self, model, tools):
+        self.llm_model = model.bind_tools(tools)
 
     def process(self, state: State):
         """

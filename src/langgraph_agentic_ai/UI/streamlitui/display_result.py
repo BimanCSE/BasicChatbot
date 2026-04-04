@@ -1,6 +1,8 @@
 import streamlit as st
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.messages import ToolMessage
+from src.langgraph_agentic_ai.UI.config import UsecaseEnum
+from pprint import pprint
 
 
 class DisplayResultStreamlit:
@@ -15,7 +17,11 @@ class DisplayResultStreamlit:
         """
         Display the result of the graph
         """
-        if self.usecase in ("Basic Chatbot", "Chatbot with tool"):
+        if self.usecase in (
+            UsecaseEnum.BASIC_CHATBOT,
+            UsecaseEnum.CHATBOT_WITH_CALCULATOR_TOOL,
+            UsecaseEnum.CHATBOT_WITH_WEB_SEARCH_TOOL,
+        ):
             self._display_chat_history()
 
             with st.chat_message("user"):
@@ -25,7 +31,8 @@ class DisplayResultStreamlit:
                 {"messages": [HumanMessage(content=self.user_message)]},
                 config=self.config,
             )
-
+            for msg in response["messages"]:
+                msg.pretty_print()
             with st.chat_message("assistant"):
                 st.write(response["messages"][-1].content)
 

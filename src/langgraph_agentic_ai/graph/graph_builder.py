@@ -15,6 +15,8 @@ from src.langgraph_agentic_ai.tools.calculator_tool import (
     division_tool,
 )
 from src.langgraph_agentic_ai.Nodes.trvily_web_search_node import tavily_web_search_tool
+from src.langgraph_agentic_ai.Nodes.ai_news_node import AINewsNode
+from src.langgraph_agentic_ai.State.AINewsState import AINewsState
 
 
 class GraphBuilder:
@@ -22,7 +24,6 @@ class GraphBuilder:
     def __init__(self, model, checkpointer_memory):
         self.llm_model = model
         self.checkpointer_memory = checkpointer_memory
-        self.graph_builder = StateGraph(State)
 
     def basic_chatbot(self):
         """
@@ -82,16 +83,39 @@ class GraphBuilder:
         self.graph_builder.add_conditional_edges("chatbot", tools_condition)
         self.graph_builder.add_edge("tools", "chatbot")
 
+    def chatbot_with_ai_news_summarizer_tool(self):
+        """
+        Builds a chatbot graph with ai news summarizer tool.
+        This method creates a chatbot graph that includes both a chatbot node and ai news summarizer tool node. it defines tools, initialized the chatbot with tool
+        capabilities, and sets up conditional and direct edges between nodes. The chatbot node is set as the entry point.
+        """
+        ai_news_node = AINewsNode(llm=self.llm_model)
+        # define the nodes
+        self.graph_builder.add_node("fetch_news", ai_news_node.fetch_news)
+        self.graph_builder.add_node("summarize_news", ai_news_node.summarize_news)
+        self.graph_builder.add_node("save_result", ai_news_node.save_result)
+        # define the edges
+        self.graph_builder.add_edge(START, "fetch_news")
+        self.graph_builder.add_edge("fetch_news", "summarize_news")
+        self.graph_builder.add_edge("summarize_news", "save_result")
+        self.graph_builder.add_edge("save_result", END)
+
     def setup_graph(self, usecase):
         """
         Set up the graph based on the selected use case
         """
         if usecase == UsecaseEnum.BASIC_CHATBOT:
+            self.graph_builder = StateGraph(State)
             self.basic_chatbot()
         elif usecase == UsecaseEnum.CHATBOT_WITH_CALCULATOR_TOOL:
+            self.graph_builder = StateGraph(State)
             self.basic_chatbot_with_tool()
         elif usecase == UsecaseEnum.CHATBOT_WITH_WEB_SEARCH_TOOL:
+            self.graph_builder = StateGraph(State)
             self.chatbot_with_web_search_tool()
+        elif usecase == UsecaseEnum.CHATBOT_WITH_AI_NEWS_SUMMARIZER_TOOL:
+            self.graph_builder = StateGraph(AINewsState)
+            self.chatbot_with_ai_news_summarizer_tool()
         else:
             st.error("Error : Failed to select the use case")
             return

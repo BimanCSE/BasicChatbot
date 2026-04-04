@@ -13,7 +13,8 @@ class LoadStreamlitUI:
     def load_streamlit_ui(self):
         st.set_page_config(page_title=self.config.page_title, layout="wide")
         st.header(" " + self.config.page_title)
-
+        st.session_state.timeframe = None
+        st.session_state.IsFetchButtonClicked = False
         with st.sidebar:
             ### get options from config
             llm_options = self.config.llm_option
@@ -38,6 +39,8 @@ class LoadStreamlitUI:
             if (
                 self.user_control["selected_usecase"]
                 == UsecaseEnum.CHATBOT_WITH_WEB_SEARCH_TOOL
+                or self.user_control["selected_usecase"]
+                == UsecaseEnum.CHATBOT_WITH_AI_NEWS_SUMMARIZER_TOOL
             ):
                 self.user_control["tavily_api_key"] = st.text_input(
                     value=self.config.tavily_api_key,
@@ -45,4 +48,15 @@ class LoadStreamlitUI:
                     label="tavily_api_key",
                 )
                 os.environ["TAVILY_API_KEY"] = self.user_control["tavily_api_key"]
+            if (
+                self.user_control["selected_usecase"]
+                == UsecaseEnum.CHATBOT_WITH_AI_NEWS_SUMMARIZER_TOOL
+            ):
+                st.subheader("News Timeline Options")
+                time_frame = st.selectbox(
+                    "Select News Timeline", ["Daily", "Weekly", "Monthly"]
+                )
+                if st.button("Fetch News", use_container_width=True):
+                    st.session_state.IsFetchButtonClicked = True
+                    st.session_state.time_frame = time_frame
         return self.user_control

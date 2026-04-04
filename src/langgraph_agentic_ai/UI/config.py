@@ -9,6 +9,7 @@ class UsecaseEnum(Enum):
     BASIC_CHATBOT = "Basic Chatbot"
     CHATBOT_WITH_CALCULATOR_TOOL = "Chatbot with calculator tool"
     CHATBOT_WITH_WEB_SEARCH_TOOL = "Chatbot with web search tool"
+    CHATBOT_WITH_AI_NEWS_SUMMARIZER_TOOL = "Chatbot with ai news summarizer tool"
 
 
 class ConfigClass:
@@ -24,6 +25,7 @@ class ConfigClass:
         UsecaseEnum.BASIC_CHATBOT,
         UsecaseEnum.CHATBOT_WITH_CALCULATOR_TOOL,
         UsecaseEnum.CHATBOT_WITH_WEB_SEARCH_TOOL,
+        UsecaseEnum.CHATBOT_WITH_AI_NEWS_SUMMARIZER_TOOL,
     ]
     page_title = "Langgraph : Build stateful agentic ai system"
     llm_option = ["Openai"]

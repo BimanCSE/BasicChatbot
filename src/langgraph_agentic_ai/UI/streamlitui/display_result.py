@@ -35,6 +35,20 @@ class DisplayResultStreamlit:
                 msg.pretty_print()
             with st.chat_message("assistant"):
                 st.write(response["messages"][-1].content)
+        elif self.usecase == UsecaseEnum.CHATBOT_WITH_AI_NEWS_SUMMARIZER_TOOL:
+            print(self.user_message)
+            frequency = self.user_message
+            with st.spinner("Fetching and summarizing news .... "):
+                result = self.graph.invoke(
+                    {"frequency": frequency},
+                    config=self.config,
+                )
+            st.markdown(result["summary"], unsafe_allow_html=True)
+            st.download_button(
+                label="Download News Summary",
+                data=result["saved_file_name"],
+                file_name=result["saved_file_name"],
+            )
 
     def _display_chat_history(self):
         """

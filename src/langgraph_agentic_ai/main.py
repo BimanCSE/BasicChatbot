@@ -23,7 +23,11 @@ def load_langgraph_agentic_ai_app():
     if not user_input:
         st.error("Error : Failed to userinput from the ui ")
         return
-    user_message = st.chat_input("Enter your message")
+    if st.session_state.IsFetchButtonClicked:
+        user_message = st.session_state.time_frame
+    else:
+        user_message = st.chat_input("Enter your message")
+
     if user_message:
         try:
             ### cofigure the llm model

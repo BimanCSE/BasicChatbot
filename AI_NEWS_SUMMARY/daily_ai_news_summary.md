@@ -1,0 +1,16 @@
+### **2026-04-04**
+# - [India's film industry is leveraging AI to significantly reduce production costs and time, enabling multilingual releases and recutting older films for additional revenue.](https://www.reuters.com/technology/ai-is-rewiring-worlds-most-prolific-film-industry-2026-04-04/)
+# - [Salesforce introduces a major AI upgrade for Slack, enhancing its capabilities for small businesses.](https://www.forbes.com/sites/quickerbettertech/2026/04/04/small-business-technology-news-salesforce-rolls-out-a-major-ai-upgrade-for-slack/)
+# - [Automation Anywhere is focusing on AI-driven workforce transformation, aligning with World Economic Forum discussions to position itself as a thought leader.](https://www.tipranks.com/news/private-companies/automation-anywhere-positions-itself-around-ai-era-workforce-transformation)
+# - [A significant portion of U.S. adults are using AI for health advice, with many uploading personal medical data to chatbots.](https://www.wsj.com/tech/ai/health-data-perplexity-claude-ai-d792a2df?gaa_at=eafs&gaa_n=AWEtsqdtGDlbEgZ0dCKDqinMTe3MpLliSG1iZx_p_sobQjd0yoT0MoeVZkrK&gaa_ts=69d0dfc1&gaa_sig=5p1UtuVOtt67EM3J4Ef8rHpe6Rs6bRoW6xApYdxXJmQ2C_Q4syb9DRewpKN_tgoFYdLRvIjtJYXY2DNnYRokzA%3D%3D)
+
+### **2026-04-03**
+# - [Meta is building a hardware team for its Superintelligence Labs, indicating a shift towards AI-native devices.](https://letsdatascience.com/news/meta-builds-hardware-team-for-superintelligence-15ba3a68)
+# - [Anthropic is increasing its political activities by forming a new PAC to influence AI policy and regulation.](https://techcrunch.com/2026/04/03/anthropic-ramps-up-its-political-activities-with-a-new-pac/)
+# - [OpenAI has acquired a media brand to influence industry and consumer opinions on AI, as it prepares for an IPO.](https://www.mediapost.com/publications/article/414071/openai-becomes-the-voice-of-ai.html?edition=142153)
+# - [IREX launches an updated AI module for rapid fire and smoke detection, enhancing safety without additional hardware.](https://thenextweb.com/news/irex-ai-fire-detection)
+# - [Meta is laying off hundreds of employees while investing heavily in AI, signaling a shift towards machine-augmented operations.](https://nypost.com/2026/04/03/business/meta-lays-off-hundreds-after-ceo-mark-zuckerberg-said-ai-can-replace-teams/)
+# - [AI industry leaders are automating research workflows, with companies like OpenAI and DeepMind leading the charge.](https://letsdatascience.com/news/ai-industry-pursues-self-improving-research-systems-32187f56)
+# - [AI Future, an international AI and Web3 forum, will gather thousands of participants in Moscow to discuss technological trends.](https://hackread.com/ai-future-the-leading-international-ai-and-web3-forum-to-take-place-in-april/)
+# - [AI is reshaping white-collar work and management, with new tools and systems being introduced to enhance productivity.](https://letsdatascience.com/news/ai-industry-pursues-self-improving-research-systems-32187f56)
+# - [AI Today in 5 discusses the latest developments in AI compliance and governance strategies.](https://www.jdsupra.com/legalnews/ai-today-in-5-april-3-2026-the-good-f-11183/)

@@ -104,17 +104,24 @@ class GraphBuilder:
         """
         Set up the graph based on the selected use case
         """
-        if usecase == UsecaseEnum.BASIC_CHATBOT:
+        if usecase in (
+            UsecaseEnum.BASIC_CHATBOT,
+            UsecaseEnum.CHATBOT_WITH_CALCULATOR_TOOL,
+            UsecaseEnum.CHATBOT_WITH_WEB_SEARCH_TOOL,
+        ):
             self.graph_builder = StateGraph(State)
-            self.basic_chatbot()
-        elif usecase == UsecaseEnum.CHATBOT_WITH_CALCULATOR_TOOL:
-            self.graph_builder = StateGraph(State)
-            self.basic_chatbot_with_tool()
-        elif usecase == UsecaseEnum.CHATBOT_WITH_WEB_SEARCH_TOOL:
-            self.graph_builder = StateGraph(State)
-            self.chatbot_with_web_search_tool()
         elif usecase == UsecaseEnum.CHATBOT_WITH_AI_NEWS_SUMMARIZER_TOOL:
             self.graph_builder = StateGraph(AINewsState)
+        else:
+            st.error("Error : Failed to select the use case")
+            return
+        if usecase == UsecaseEnum.BASIC_CHATBOT:
+            self.basic_chatbot()
+        elif usecase == UsecaseEnum.CHATBOT_WITH_CALCULATOR_TOOL:
+            self.basic_chatbot_with_tool()
+        elif usecase == UsecaseEnum.CHATBOT_WITH_WEB_SEARCH_TOOL:
+            self.chatbot_with_web_search_tool()
+        elif usecase == UsecaseEnum.CHATBOT_WITH_AI_NEWS_SUMMARIZER_TOOL:
             self.chatbot_with_ai_news_summarizer_tool()
         else:
             st.error("Error : Failed to select the use case")

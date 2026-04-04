@@ -5,6 +5,9 @@ from src.langgraph_agentic_ai.graph.graph_builder import GraphBuilder
 from src.langgraph_agentic_ai.UI.streamlitui.display_result import (
     DisplayResultStreamlit,
 )
+from langgraph.checkpoint.memory import InMemorySaver
+
+checkpointer_memory = InMemorySaver()
 
 
 def load_langgraph_agentic_ai_app():
@@ -37,11 +40,16 @@ def load_langgraph_agentic_ai_app():
             if not usecase:
                 st.error("Error : Failed to select the use case")
                 return
-            graph_builder = GraphBuilder(model=model)
+            graph_builder = GraphBuilder(
+                model=model, checkpointer_memory=checkpointer_memory
+            )
             try:
                 graph = graph_builder.setup_graph(usecase=usecase)
                 display_result = DisplayResultStreamlit(
-                    graph=graph, usecase=usecase, user_message=user_message
+                    graph=graph,
+                    usecase=usecase,
+                    user_message=user_message,
+                    checkpointer_memory=checkpointer_memory,
                 )
                 display_result.display_result()
             except Exception as e:

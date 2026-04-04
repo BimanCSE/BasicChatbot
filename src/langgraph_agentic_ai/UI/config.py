@@ -13,6 +13,6 @@ class ConfigClass:
     langsmith_endpoint = os.getenv("LANGSMITH_ENDPOINT")
 
     llm_model_name = ["gpt-4o", "gpt-4o-mini"]
-    use_case_option = ["Basic Chatbot"]
+    use_case_option = ["Basic Chatbot", "Chatbot with tool"]
     page_title = "Langgraph : Build stateful agentic ai system"
     llm_option = ["Openai"]
